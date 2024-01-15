@@ -25,7 +25,7 @@
  /*######
  ## go_brazier_of_madness
  ######*/
-
+//
 static ZGCreatureIds const madnessCreatures[] =
 {
    NPC_HAZZARAH, NPC_WUSHOOLAY, NPC_RENATAKI, NPC_GRILEK
