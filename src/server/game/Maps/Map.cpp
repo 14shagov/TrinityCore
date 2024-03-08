@@ -52,8 +52,6 @@
 #include <unordered_set>
 #include <vector>
 
-#include "Hacks/boost_1_74_fibonacci_heap.h"
-
 u_map_magic MapMagic        = { {'M','A','P','S'} };
 uint32 MapVersionMagic      = 10;
 u_map_magic MapAreaMagic    = { {'A','R','E','A'} };
@@ -78,8 +76,6 @@ struct RespawnInfoWithHandle;
 struct RespawnListContainer : boost::heap::fibonacci_heap<RespawnInfoWithHandle*, boost::heap::compare<CompareRespawnInfo>>
 {
 };
-
-BOOST_1_74_FIBONACCI_HEAP_MSVC_COMPILE_FIX(RespawnListContainer::value_type)
 
 struct RespawnInfoWithHandle : RespawnInfo
 {
@@ -174,7 +170,7 @@ void Map::LoadMMap(int gx, int gy)
     if (!DisableMgr::IsPathfindingEnabled(GetId()))
         return;
 
-    bool mmapLoadResult = MMAP::MMapFactory::createOrGetMMapManager()->loadMap((sWorld->GetDataPath() + "mmaps").c_str(), GetId(), gx, gy);
+    bool mmapLoadResult = MMAP::MMapFactory::createOrGetMMapManager()->loadMap(sWorld->GetDataPath(), GetId(), gx, gy);
 
     if (mmapLoadResult)
         TC_LOG_DEBUG("mmaps.tiles", "MMAP loaded name:{}, id:{}, x:{}, y:{} (mmap rep.: x:{}, y:{})", GetMapName(), GetId(), gx, gy, gx, gy);
@@ -302,6 +298,8 @@ i_scriptLock(false), _respawnTimes(std::make_unique<RespawnListContainer>()), _r
     Map::InitVisibilityDistance();
 
     _weatherUpdateTimer.SetInterval(time_t(1 * IN_MILLISECONDS));
+
+    MMAP::MMapFactory::createOrGetMMapManager()->loadMapInstance(sWorld->GetDataPath(), GetId(), GetInstanceId());
 
     sScriptMgr->OnCreateMap(this);
 }
