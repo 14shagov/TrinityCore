@@ -914,7 +914,6 @@ public:
 enum PossessDemon
 {
     EVENT_CAST_TRANSFORM                    = 20,
-    EVENT_FINISHED_CAST_POSSESSION_TRANSFER,
 
     SPELL_DOOMPUNISHER_POSSESSION_TRANSFER  = 40503,
     SPELL_SHIVAN_POSSESSION_TRANSFER        = 41962
@@ -948,7 +947,7 @@ struct possess_demonAI : public WorldBossAI
         }
     }
 
-    void DamageTaken(Unit* attacker, uint32& damage, DamageEffectType /*damageType*/, SpellInfo const* /*spellInfo = nullptr*/) override
+    void DamageTaken(Unit* /*attacker*/, uint32& damage, DamageEffectType /*damageType*/, SpellInfo const* /*spellInfo = nullptr*/) override
     {
         if (damage >= me->GetHealth())
         {
