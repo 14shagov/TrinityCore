@@ -17,8 +17,12 @@
 
 // This is where scripts' loading functions should be declared:
 
+void AddSC_instance_test_lair();
+void AddSC_test_lair();
 // The name of this function should match:
 // void Add${NameOfDirectory}Scripts()
 void AddCustomScripts()
 {
+    AddSC_instance_test_lair();
+    AddSC_test_lair();
 }
