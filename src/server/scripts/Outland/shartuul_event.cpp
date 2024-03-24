@@ -1979,11 +1979,6 @@ public:
             Events.ScheduleEvent(EVENT_CAST_MIND_FLAY, 2s);
         }
 
-        void SpellHit(WorldObject* /*caster*/, SpellInfo const* spellInfo) override
-        {
-            TC_LOG_INFO("server.loading", "spell hit {}", spellInfo->Id);
-        }
-
         void ExecuteEvent(uint32 eventId) override
         {
             switch (eventId)
