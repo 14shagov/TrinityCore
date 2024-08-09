@@ -1181,8 +1181,6 @@ struct boss_shivan_assassin : public possess_demonAI
     }
 };
 
-/////////////////////
-
 ///////////////////
 ///COMMON BOSSES///
 ///////////////////
