@@ -814,7 +814,7 @@ struct npc_warp_gate_shield : public ScriptedAI
                     Creature* overseerShartuul = ObjectAccessor::GetCreature(*me, _overseerShartuulGUID);
                     overseerShartuul->AI()->Talk(SAY_FIRST_HAMMER_THROWN);
                 }
-            if (_shiledHit == 1) //8After eight hits, the shield explodes
+            if (_shiledHit == 8) //After eight hits, the shield explodes
             {
                 ShieldExplode();
                 _events.Reset();
@@ -1928,10 +1928,8 @@ class spell_shartuuls_transporter_possession_transfer : public AuraScript
         //Swaping the demon
         charmer->RemoveAurasDueToSpell(prevCharm);
         target->RemoveAurasDueToSpell(prevCharm);
-
         if (target->IsCreature())
             target->KillSelf();
-
         charmer->CastSpell(caster, currCharm);
         caster->CombatStop();
     }
