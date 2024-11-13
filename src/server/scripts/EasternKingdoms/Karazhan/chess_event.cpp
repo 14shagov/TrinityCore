@@ -50,9 +50,6 @@
 #include "EventMap.h"
 #include "SpellHistory.h"
 
-
-#include "Log.h"
-
 ///                                             *** CHESS EVENT GUIDE ***
 ///
 /// npc_echo_of_medivh - Periodically casts random spells that hinder the player and help Medivh.
