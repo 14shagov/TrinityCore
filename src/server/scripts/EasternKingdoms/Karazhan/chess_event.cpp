@@ -760,7 +760,6 @@ struct npc_chess_piece_generic : public ScriptedAI
     void ExecuteSpell(uint32 spellId, float range, float arc)
     {
         // Even if the target is not used in some cases, the check is necessary so that the spell is not cast in vain
-        Unit* target = nullptr;
         switch (spellId)
         {
         case SPELL_HEROISM:
